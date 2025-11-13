@@ -1,0 +1,2 @@
+class UnsupportedTable(Exception):
+    pass
