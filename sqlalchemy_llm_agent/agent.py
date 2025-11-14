@@ -27,6 +27,7 @@ class SqlalchemyAgent:
         allowed_tables = "all" if self.config.tables[0] == "*" else ", ".join(self.config.tables)
 
         system_prompt = f"""You are making sql queries for user.
+You allowed only make safe queries, no inserts or updates.
 You have access to {allowed_tables} tables from these tables {all_tables}.
 Do not touch other tables if you don't have access to it.
         """
