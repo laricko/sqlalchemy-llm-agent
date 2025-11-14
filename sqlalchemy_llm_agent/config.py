@@ -13,23 +13,23 @@ class SqlalchemyAgentConfig(BaseModel):
         row_limit (int, optional): By default - 100
         inspector (sqlalchemy.inspect object) - required
     """
-    api_key: str = Field(..., description="LLM API key (например, OpenAI API key).")
+    api_key: str = Field(..., description="LLM API key (for example, an OpenAI API key).")
     model: str = Field(
         "gpt-5",
-        description="Имя модели LLM, используемой агентом.",
+        description="Name of the LLM model used by the agent.",
     )
     tables: Sequence[str] = Field(
         ...,
         description=(
-            "Список declarative-классов SQLAlchemy, по которым агент может "
-            "строить SQL-запросы."
+            "List of SQLAlchemy declarative classes that the agent can use "
+            "to build SQL queries."
         ),
     )
     row_limit: int = Field(
         100,
         ge=1,
-        description="Максимальное количество строк, которое агент может вернуть за один запрос.",
+        description="Maximum number of rows the agent may return per request.",
     )
-    inspector: Inspector = Field(..., description="Объект inspector для таблиц")
-    engine: Engine = Field(..., description="Engine объект чтобы делать запросы")
+    inspector: Inspector = Field(..., description="Inspector object used to introspect tables.")
+    engine: Engine = Field(..., description="Engine object used to execute queries.")
     model_config = ConfigDict(arbitrary_types_allowed=True)
