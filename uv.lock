@@ -733,22 +733,22 @@ version = "0.1.0"
 source = { virtual = "." }
 dependencies = [
     { name = "langchain", extra = ["openai"] },
+    { name = "sqlalchemy" },
 ]
 
 [package.dev-dependencies]
 dev = [
     { name = "mypy" },
-    { name = "sqlalchemy" },
 ]
 
 [package.metadata]
-requires-dist = [{ name = "langchain", extras = ["openai"], specifier = ">=1.0.5" }]
-
-[package.metadata.requires-dev]
-dev = [
-    { name = "mypy", specifier = ">=1.18.2" },
+requires-dist = [
+    { name = "langchain", extras = ["openai"], specifier = ">=1.0.5" },
     { name = "sqlalchemy", specifier = ">=2.0.44" },
 ]
+
+[package.metadata.requires-dev]
+dev = [{ name = "mypy", specifier = ">=1.18.2" }]
 
 [[package]]
 name = "tenacity"
