@@ -9,7 +9,7 @@ README_PATH = ROOT / "README.md"
 
 setup(
     name="sqlalchemy-llm-agent",
-    version="0.1.2",
+    version="0.1.3",
     description="LLM-powered helper utilities for building SQLAlchemy agents.",
     long_description=README_PATH.read_text(encoding="utf-8") if README_PATH.exists() else "LLM helpers for SQLAlchemy.",
     long_description_content_type="text/markdown",
