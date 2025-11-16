@@ -13,6 +13,9 @@ dependencies = [
 [project.urls]
 "Homepage" = "https://github.com/laricko/sqlalchemy-llm-agent"
 
+[project.scripts]
+sqlalchemy_llm_agent = "sqlalchemy_llm_agent.cli:main"
+
 [dependency-groups]
 dev = [
     "mypy>=1.18.2",

@@ -49,3 +49,32 @@ The agent will automatically:
 
 You now have a reusable component that can power chatbots, dashboards, or internal tools that
 need natural-language access to relational data.
+
+## Command-line usage
+You can also run ad-hoc queries directly from a terminal with the bundled CLI. Create a Python
+config file that exposes a `sqlalchemy_llm_agent_config` variable:
+
+```python
+# config.py
+from sqlalchemy import create_engine, inspect
+from sqlalchemy_llm_agent import SqlalchemyAgentConfig
+
+engine = create_engine("postgresql+psycopg://user:pass@localhost:5432/mydb")
+inspector = inspect(engine)
+
+sqlalchemy_llm_agent_config = SqlalchemyAgentConfig(
+    api_key="sk-openai-123",
+    tables=["payments"],
+    inspector=inspector,
+    engine=engine,
+)
+```
+
+Then invoke the CLI by pointing it to the config file and passing the natural-language query:
+
+```
+sqlalchemy_llm_agent --config ./config.py "Give me success payments"
+```
+
+The command prints the resulting rows as formatted JSON, making it easy to script around or
+inspect responses interactively.
